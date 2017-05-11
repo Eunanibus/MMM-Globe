@@ -1,0 +1,97 @@
+
+/* globe styles css */
+
+ .globe {
+    background-color: #000000;
+    font-family: 'Inconsolata', sans-serif;
+    color: #fff;
+    font-size: 8pt;
+    margin: 0;
+    overflow: hidden;
+}
+
+ .blue {
+    color: #00eeee;
+}
+
+ .yellow {
+    color: #ffcc00;
+}
+
+.h3 {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 5px 0;
+
+}
+
+#globe {
+    margin: 0;
+    padding: 0;
+}
+
+@-webkit-keyframes pulsate {
+    0% {opacity: .3;}
+    50% {opacity: 1.0;}
+    100% {opacity: 0.3;}
+}
+
+@keyframes pulsate {
+    0% {opacity: 0.3;}
+    50% {opacity: 1.0;}
+    100% {opacity: 0.3;}
+}
+
+#add-element li {
+   float: left;
+   width: 25%;
+   margin: 5px;
+}
+
+#add-element li:first-child {
+   margin-left: 2px;
+
+}
+
+#add-element .selected {
+    background-color: #111;
+}
+
+.globeLabel {
+    /* clear: both; */
+    /* float:left; */
+    display: inline-block;
+    width: 120px;
+    margin-top: 12px;
+}
+
+#pin-color {
+    background-color: #00eeee;
+}
+
+#marker-color {
+    background-color: #ffcc00;
+}
+
+#satellite-color {
+    background-color: #ff0000;
+}
+
+/* spectrum changes */
+
+.sp-dd {
+    display: none;
+}
+
+.sp-replacer {
+    padding: 0;
+    background-color: inherit;
+    border: none;
+}
+.sp-preview {
+    float: none;
+    width: 10px;
+    height: 10px;
+    margin-right: 0;
+    border: 1px solid #1d2c33;
+}
