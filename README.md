@@ -2,6 +2,8 @@
 This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror). It displays a rotating globe constructed of Hexadecimal shapes specifically formatted to look great on a Magic Mirror.
 Extensive thanks and gratitude to the globe object's original creator <a href="https://www.robscanlon.com">Rob Scanlon</a> for all his help and support.
 
+<img src="http://i.imgur.com/3VAToUR.png">
+
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/Eunanibus/MMM-Globe`. A new folder will appear.
 2. Add it to the modules array in the `config/config.js` (see next step below)
