@@ -1,10 +1,9 @@
-# MMM-HTTPRequestDisplay
-This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror). It can translate XML responses from HTTP requests and display formatted information. Sensors such as Arduino's, ESP8266, Microcontrollers or small servers that maintain sensor data based as XML may find this useful.
-
-This is version 1.0 and therefore not at a stage for widespread use.
+# MMM-Globe
+This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror). It displays a rotating globe constructed of Hexadecimal shapes specifically formatted to look great on a Magic Mirror.
+Extensive thanks and gratitude to the globe object's original creator <a href="https://www.robscanlon.com">Rob Scanlon</a> for all his help and support.
 
 ## Installation
-1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/Eunanibus/MMM-HTTPRequestDisplay`. A new folder will appear.
+1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/Eunanibus/MMM-Globe`. A new folder will appear.
 2. Add it to the modules array in the `config/config.js` (see next step below)
 
 ## Using the module
@@ -13,11 +12,19 @@ To use this module, add it to the modules array in the `config/config.js` file:
 ````javascript
 modules: [
 	{
-		module: 'MMM-HTTPRequestDisplay',
-		position: 'bottom_bar',	// This can be any of the regions. Best results in bottom_bar or top_bar (if clear of calender and weather modules) regions.
-		header: 'MMM-HTTPRequestDisplay', // This is optional
+		module: 'MMM-Globe',
+		position: 'lower_third',	// This can be any of the regions. Best results in lower_third
 		config: {
-			// See 'Configuration options' for more information.
+                size:"medium", // Globe size. See configuration options below for more options
+                locations: [ 
+                    // Fill with location Objects if desired
+                    // e.g.
+                    // {lat:37.77493,lng:-122.41942, label: "San Francisco"},
+                    // {lat:-23.5475,lng:-46.63611, label: "Sao Paulo"}
+                    
+                    // Individual values must be seperated by a comma. 
+                    // You can look up the latitude and longitude for a specific location on Google Maps.
+                ]
 		}
 	}
 ]
@@ -29,7 +36,6 @@ The following properties can be configured:
 
 
 <table width="100%">
-	<!-- why, markdown... -->
 	<thead>
 		<tr>
 			<th>Option</th>
@@ -38,25 +44,26 @@ The following properties can be configured:
 	<thead>
 	<tbody>
 		<tr>
-			<td><code>httpRequestURL</code></td>
-			<td>Your target URL for the HTTP Request.<br>
-				<br><b>i.e :</b> <code>"http://api.openweathermap.org/data/2.5/weather?q=London,uk&mode=xml"</code>
-				<br><b>Possible values:</b> <code>string</code>
-				<br><b>Default value:</b> <code>none</code>
+			<td><code>size</code></td>
+			<td>The size you'd like your globe.<br>
+				<br><b>i.e :</b> <code>medium</code>
+				<br><b>Possible values:</b> <code>x-small</code> <code>small</code> <code>medium</code> <code>large</code> <code>x-large</code>
+				<br><b>Default value:</b> <code>medium</code>
 			</td>
 		</tr>
 		<tr>
-			<td><code>updateInterval</code></td>
-			<td>The rate (in ms) at which the display will display each node of the response.<br>
-				<br><b>Possible values:</b> <code>int</code>
-				<br><b>Default value:</b> <code>2500</code>
-			</td>
-		</tr>
+        			<td><code>locations</code></td>
+        			<td>(Optional)An array of Location objects. These will construct the pins within your globe:. Each value must be seperated within the array by a comma.
+        			<p><p><code>{lat: latitudeValue , lng: longitudeValue, label:"Label Value"}</code><br>
+        				<br><b>i.e :</b> <code> [{lat:37.77493,lng:-122.41942, label: "San Francisco"}]</code>
+        				<br><b>Default value:</b> A default array of locations will be provided if none is specified. Leave blank if default locations are OK.
+        			</td>
+        		</tr>
 	</tbody>
 </table>
 
 ## Dependencies
-- none
+- All dependencies in this module are self-regulated
 
 The MIT License (MIT)
 =====================
