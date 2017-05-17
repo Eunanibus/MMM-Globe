@@ -77,13 +77,13 @@ Module.register("MMM-Globe",{
 	sizeTranslate : function(size){
 		switch(size) {
 			case "x-small" :
-			return 2;
+			return 4;
 			case "small" :
-			return 1.8;
+			return 3;
 			case "medium" :
-			return 1.5;
+			return 2;
 			case "large" :
-			return 1.2;
+			return 1.5;
 			case "x-large" :
 			return 1;
 		}

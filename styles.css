@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 /* globe styles css */
 
  .globe {
     background-color: #000000;
-    font-family: 'Inconsolata', sans-serif;
+    font-family: 'Inconsolata', sans-serif; !important;
     color: #fff;
     font-size: 8pt;
     margin: 0;
