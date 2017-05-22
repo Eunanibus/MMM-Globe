@@ -12,7 +12,16 @@ Module.register("MMM-Globe",{
 	// Default module config.
 	defaults: {
 		size : "medium",
-        locations : []
+        locations : [],
+		pins: [],
+		markers: [],
+		angle: 0,
+		pinColor: "",
+		markerColor: "",
+		baseColor: "",
+		speed: 1,
+		showPins: true,
+		showMarkers: true
 	},
 
 	// Define required scripts.
@@ -52,15 +61,29 @@ Module.register("MMM-Globe",{
 	},
 
 	createGlobe : function(width, height) {
-	    if(this.locations.length <= 0) {
-            Array.prototype.push.apply(data, defaultData);
+		log.info("Loading data...");
+		var globeData = [];
+
+		if (this.showpins == true) {
+			if (this.pins.length <= 0) {
+				Array.prototype.push.apply(globeData, data);
+			} else {
+				Array.prototype.push.apply(globeData, this.pins);
+			}
+		}
+
+	    if(this.locations.length <= 0) {  // enforce config locations
+            Array.prototype.push.apply(globeData, defaultData);
         }
         else {
-            Array.prototype.push.apply(data, this.locations);
+            Array.prototype.push.apply(globeData, this.locations);
         }
+
+
+        log.info("Creating globe...");
 		var globe = new ENCOM.Globe(width, height, {
 		tiles: grid.tiles, // The locations of the hexes; this really should be refactored into a standard 3d model.. .from grid.js
-		data: data // The default pins (Boston, Moscow, etc, and all the non-labelled ones)... from data.js
+		data: globeData // The default pins (Boston, Moscow, etc, and all the non-labelled ones)... from data.js
 		});
 
 		globe.init(animate);  // tell the globe to start the animation loop when everything has been intialized
@@ -71,6 +94,7 @@ Module.register("MMM-Globe",{
 		}
 
 		this.globe = globe;
+		data = null;
 		return globe;
 	},
 
