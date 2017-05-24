@@ -18,6 +18,8 @@ modules: [
 		position: 'lower_third',	// This can be any of the regions. Best results in lower_third
 		config: {
                 size:"medium", // Globe size. See configuration options below for more options
+                dayLength: 38, // (Optional) Rotation speed. See configuration options below
+                viewAngle: 15, // (Optional) Globe tilt. See configuration options below.
                 locations: [ 
                     // Fill with location Objects if desired
                     // e.g.
@@ -54,13 +56,29 @@ The following properties can be configured:
 			</td>
 		</tr>
 		<tr>
-        			<td><code>locations</code></td>
-        			<td>(Optional)An array of Location objects. These will construct the pins within your globe:. Each value must be seperated within the array by a comma.
-        			<p><p><code>{lat: latitudeValue , lng: longitudeValue, label:"Label Value"}</code><br>
-        				<br><b>i.e :</b> <code> [{lat:37.77493,lng:-122.41942, label: "San Francisco"}]</code>
-        				<br><b>Default value:</b> A default array of locations will be provided if none is specified. Leave blank if default locations are OK.
-        			</td>
-        		</tr>
+            <td><code>locations</code></td>
+            <td>(Optional)An array of Location objects. These will construct the pins within your globe:. Each value must be seperated within the array by a comma.
+            <p><p><code>{lat: latitudeValue , lng: longitudeValue, label:"Label Value"}</code><br>
+                <br><b>i.e :</b> <code> [{lat:37.77493,lng:-122.41942, label: "San Francisco"}]</code>
+                <br><b>Default value:</b> A default array of locations will be provided if none is specified. Leave blank if default locations are OK.
+            </td>
+        </tr>
+        <tr>
+            <td><code>dayLength</code></td>
+            <td>(Optional) The number of seconds for the globe to complete a full rotation.</br>
+                <b>Possible values:</b> Positive numbers greater than zero.<br />
+                <b>Default value:</b> 28
+            </td>
+        </tr>
+        <tr>
+            <td><code>viewAngle</code></td>
+            <td>(Optional) The angle at which to tilt the globe, measure in degrees. Positive values tilt the globe
+                towards the northern hemisphere (Asia, North America, Europe) whilst negative values tilt towards the southern
+                hemisphere (Africa, Australia, South America).<br />
+                <b>Possible values:</b> Any number between -90 and 90.<br/>
+                <b>Default value:</b> 0 (View centered on the equator).
+            </td>
+        </tr>
 	</tbody>
 </table>
 
