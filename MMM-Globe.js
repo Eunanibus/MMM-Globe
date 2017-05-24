@@ -14,10 +14,10 @@ Module.register("MMM-Globe",{
 		size : "medium",
         locations : [],
 		markers: [],
-		angle: 0,
+		viewAngle: 0,
 		markerColor: "",
 		baseColor: "",
-		speed: 1,
+		dayLength: 28,
 		showPins: true,
 		showMarkers: true,
 		reloadTimer: 0
@@ -44,8 +44,14 @@ Module.register("MMM-Globe",{
 		this.globe = null;
 		this.translatedSize = this.sizeTranslate(this.config.size);
         this.locations = this.config.locations;
-        this.pins = this.config.pins;
-        this.viewAngle = parseFloat(this.config.angle);
+        this.viewAngle = this.convertDegreesToRadians(this.config.viewAngle);
+        if (this.config.dayLength >= 0) {
+            this.dayLength = parseFloat(this.config.dayLength);
+        }
+	},
+
+	convertDegreesToRadians: function(degrees) {
+		return (parseFloat(degrees) * Math.PI) / 180;
 	},
 
 	// Override dom generator.
@@ -75,11 +81,12 @@ Module.register("MMM-Globe",{
         }
 
 
-        Log.info("Creating globe...");
+        Log.info("Creating globe... (" + this.config.dayLength + " sec/rotation)");
 		var globe = new ENCOM.Globe(width, height, {
 		tiles: grid.tiles, // The locations of the hexes; this really should be refactored into a standard 3d model.. .from grid.js
 		data: globeData, // The default pins (Boston, Moscow, etc, and all the non-labelled ones)... from data.js
-		viewAngle: this.viewAngle //
+		viewAngle: this.viewAngle, // tilt the globe
+		dayLength: this.dayLength * 1000 // time for one rotation
 		});
 
 		globe.init(animate);  // tell the globe to start the animation loop when everything has been intialized
