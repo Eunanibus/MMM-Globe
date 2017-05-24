@@ -15,12 +15,7 @@ Module.register("MMM-Globe",{
         locations : [],
 		markers: [],
 		viewAngle: 0,
-		markerColor: "",
-		baseColor: "",
-		dayLength: 28,
-		showPins: true,
-		showMarkers: true,
-		reloadTimer: 0
+		dayLength: 28
 	},
 
 	// Define required scripts.
