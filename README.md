@@ -18,51 +18,42 @@ modules: [
 		position: 'lower_third',	// This can be any of the regions. Best results in lower_third
 		config: {
                 size:"medium", // Globe size. See configuration options below for more options
-                locations: [ 
+				dayLength: 38, // (Optional) Rotation speed. See configuration options below
+			    viewAngle: 15, // (Optional) Globe tilt. See configuration options below.
+				introLinesDuration: 2000,
+				receiveExternalLocations: 0,
+                locations: [
                     // Fill with location Objects if desired
                     // e.g.
                     // {lat:37.77493,lng:-122.41942, label: "San Francisco"},
                     // {lat:-23.5475,lng:-46.63611, label: "Sao Paulo"}
-                    
-                    // Individual values must be seperated by a comma. 
+
+                    // Individual values must be seperated by a comma.
                     // You can look up the latitude and longitude for a specific location on Google Maps.
                 ]
 		}
 	}
 ]
 ````
+viewAngle:30,
+dayLength: 20,
+introLinesDuration: 2000,
+receiveExternalLocations: 1,
+
+
 
 ## Configuration options
 
 The following properties can be configured:
 
-
-<table width="100%">
-	<thead>
-		<tr>
-			<th>Option</th>
-			<th width="100%">Description</th>
-		</tr>
-	<thead>
-	<tbody>
-		<tr>
-			<td><code>size</code></td>
-			<td>The size you'd like your globe.<br>
-				<br><b>i.e :</b> <code>medium</code>
-				<br><b>Possible values:</b> <code>x-small</code> <code>small</code> <code>medium</code> <code>large</code> <code>x-large</code>
-				<br><b>Default value:</b> <code>medium</code>
-			</td>
-		</tr>
-		<tr>
-        			<td><code>locations</code></td>
-        			<td>(Optional)An array of Location objects. These will construct the pins within your globe:. Each value must be seperated within the array by a comma.
-        			<p><p><code>{lat: latitudeValue , lng: longitudeValue, label:"Label Value"}</code><br>
-        				<br><b>i.e :</b> <code> [{lat:37.77493,lng:-122.41942, label: "San Francisco"}]</code>
-        				<br><b>Default value:</b> A default array of locations will be provided if none is specified. Leave blank if default locations are OK.
-        			</td>
-        		</tr>
-	</tbody>
-</table>
+| Option           | Required | Type | Description
+|----------------- |-----------|-------|----------------
+| <code>size</code>| *yes*|`string`| The size you'd like your globe.<br><br><b>i.e :</b> <code>medium</code><br><b>Possible values:</b><code>x-small</code> <code>small</code> <code>medium</code> <code>large</code> <code>x-large</code><br><b>Default value:</b><code>medium</code>
+| <code>dayLength</code>| *no*|`int`| The number of seconds for the globe to complete a full rotation.</br><b>Possible values:</b> Positive numbers greater than zero.<br /><b>Default value:</b> 28
+| <code>viewAngle</code>| *no*|`int`| The angle at which to tilt the globe, measure in degrees. Positive values tilt the globe                 towards the northern hemisphere (Asia, North America, Europe) whilst negative values tilt towards the southern hemisphere (Africa, Australia, South America).<br /><b>Possible values:</b> Any number between -90 and 90.<br/<b>Default value:</b> 0 (View centered on the equator).
+| <code>introLinesDuration</code>| *no*|`int`| Time the Intro animation runs in milliseconds<br /><b>Possible values:</b> Any number between 0 and 5000.<br/<b>Default value:</b> 2000 (2 seconds).
+| <code>receiveExternalLocations</code>| *no*|`int`| This module is capable of displaying data provided by other modules like [MMM-GoogleAnalytics](https://github.com/SvenSommer/MMM-GoogleAnalytics).<br /><b>Possible values:</b> 1 (on) and 0 (off)<br/<b>Default value:</b> 0 (off).
+| <code>locations</code> | *no*|`string`| An array of Location objects. These will construct the pins within your globe:. Each value must be seperated within the array by a comma.<p><p><code>{lat: latitudeValue , lng: longitudeValue, label:"Label Value"}</code><br><br><b>i.e :</b> <code>[{lat:37.77493,lng:-122.41942, label: "San Francisco"}]</code><br><b>Default value:</b> A default array of locations will be provided if none is specified. Leave blank if default locations are OK.
 
 ## Dependencies
 - All dependencies in this module are self-regulated
