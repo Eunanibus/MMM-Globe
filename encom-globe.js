@@ -41989,6 +41989,7 @@ function Globe(width, height, opts){
         baseColor: "#000000",
         markerColor: "#ffffff",
         pinColor: "#ffffff",
+        pinTopColor:"#ffffff",
         satelliteColor: "#ff0000",
         blankPercentage: 0,
         thinAntarctica: .01, // only show 1% of antartica... you can't really see it on the map anyhow
@@ -42086,7 +42087,7 @@ Globe.prototype.addPin = function(lat, lon, text){
 
     var opts = {
         lineColor: this.pinColor,
-        topColor: this.pinColor
+        topColor: this.pinTopColor
     }
 
     var altitude = 1.2;
@@ -42257,6 +42258,10 @@ Globe.prototype.setMarkerColor = function(_color){
     this.markerColor = _color;
     this.scene._encom_markerTexture = null;
 
+};
+
+Globe.prototype.setpinTopColor = function(_color){
+    this.pinTopColor = _color;
 };
 
 Globe.prototype.setPinColor = function(_color){
