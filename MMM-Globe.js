@@ -16,6 +16,7 @@ Module.register("MMM-Globe",{
 		markers: [],
 		viewAngle:30,
 		dayLength: 90,
+		introLinesDuration: 2000,
 		receiveExternalLocations: 1
 	},
 
